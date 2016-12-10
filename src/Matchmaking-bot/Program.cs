@@ -36,6 +36,10 @@ namespace Matchmaking_bot
             channels.Add(def);
             List<Server> servers = new List<Server>();
             servers.Add(new Server("Amsterdam", "95.211.1.210:27029"));
+            servers.Add(new Server("London", "77.246.174.116:27035"));
+            servers.Add(new Server("Paris", "195.154.168.136:27029"));
+            servers.Add(new Server("New York City", "206.221.184.242:27029"));
+            servers.Add(new Server("Chicago", "46.21.154.203:27029"));
             lineup = "GK CB LB RB CM LW RW CF";
 
             t1 = def.t1;
@@ -44,8 +48,7 @@ namespace Matchmaking_bot
             t2.setlist(lineup);
             t1.init();
             t2.init();
-            Console.Write("enter token: ");
-            string token = Console.ReadLine();
+            string token = "TOKEN_HERE";
             _client = new DiscordClient();
 
             _client.Connect(token);
@@ -209,7 +212,7 @@ namespace Matchmaking_bot
                                 await e.Message.Channel.SendMessage("join server " + t1.getmentions() + " vs " + t2.getmentions() + " Server ->" + servers[num].toString());
                                 await e.Message.Channel.SendMessage(t1.toString() + Environment.NewLine + t2.toString());
                             }
-                            catch (Exception i)
+                            catch (Exception)
                             {
                                 await e.Message.Channel.SendMessage("Server not found.");
                             }
@@ -290,7 +293,7 @@ namespace Matchmaking_bot
                                 num--;
                                 servers.RemoveAt(num);
                             }
-                            catch (Exception i)
+                            catch (Exception)
                             {
                                 await e.Message.Channel.SendMessage("Server not found");
                             }
