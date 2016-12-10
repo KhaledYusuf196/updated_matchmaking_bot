@@ -1,5 +1,5 @@
---temp-output:c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\obj\Debug\netcoreapp1.0\
---out:c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\bin\Debug\netcoreapp1.0\Matchmaking-bot.dll
+--temp-output:C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\obj\Debug\netcoreapp1.0\
+--out:C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\bin\Debug\netcoreapp1.0\Matchmaking-bot.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -91,8 +91,8 @@
 --reference:C:\Users\lenovo\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\lenovo\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\lenovo\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
-c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Player.cs
-c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Program.cs
-c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Server.cs
-c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Team.cs
-c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Properties\AssemblyInfo.cs
+C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Player.cs
+C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Program.cs
+C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Server.cs
+C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Team.cs
+C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Properties\AssemblyInfo.cs

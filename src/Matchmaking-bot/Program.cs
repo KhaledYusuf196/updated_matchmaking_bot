@@ -81,6 +81,7 @@ namespace Matchmaking_bot
                             {
                                 channels.RemoveAt(ids.IndexOf(ulong.Parse(e.Message.Channel.Id)));
                                 ids.Remove(ulong.Parse(e.Message.Channel.Id));
+                                _client.UpdateStatus(ids.Count + " channels");
                             }
 
 
@@ -229,6 +230,7 @@ namespace Matchmaking_bot
                             await e.Message.Delete();
                             //await e.Channel.Edit(null, t1.toString() + Environment.NewLine + t2.toString());
                             await e.Message.Channel.SendMessage(t1.toString() + Environment.NewLine + t2.toString());
+                            _client.UpdateStatus(ids.Count + " channels");
                         }
                         else
                         if (e.Message.Content.ToLower().StartsWith("!vs "))
@@ -296,6 +298,7 @@ namespace Matchmaking_bot
                         else
                         if (e.Message.Content.ToLower().Equals("!sub"))
                         {
+                            _client.UpdateStatus("sub requested");
                             await e.Message.Delete();
                         }
                         else
@@ -362,8 +365,8 @@ namespace Matchmaking_bot
                                     t2.init();
                                     channels.Add(def);
                                     ids.Add(ulong.Parse(e.Message.Channel.Id));
+                                    _client.UpdateStatus(ids.Count + " channels");
                                 }
-
 
                             }
                         }

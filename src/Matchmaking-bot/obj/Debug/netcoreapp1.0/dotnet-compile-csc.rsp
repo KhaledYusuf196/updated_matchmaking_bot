@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\bin\Debug\netcoreapp1.0\Matchmaking-bot.dll"
+"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\bin\Debug\netcoreapp1.0\Matchmaking-bot.dll"
 -r:"C:\Users\lenovo\.nuget\packages\Discore\1.0.0.1\lib\netstandard1.6\Discore.dll"
 -r:"C:\Users\lenovo\.nuget\packages\Microsoft.CSharp\4.0.1\ref\netstandard1.0\Microsoft.CSharp.dll"
 -r:"C:\Users\lenovo\.nuget\packages\Microsoft.VisualBasic\10.0.1\ref\netstandard1.1\Microsoft.VisualBasic.dll"
@@ -87,8 +87,8 @@
 -r:"C:\Users\lenovo\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\lenovo\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\lenovo\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
-"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Player.cs"
-"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Program.cs"
-"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Server.cs"
-"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Team.cs"
-"c:\users\lenovo\documents\visual studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Properties\AssemblyInfo.cs"
+"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Player.cs"
+"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Program.cs"
+"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Server.cs"
+"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Team.cs"
+"C:\Users\lenovo\Documents\Visual Studio 2015\Projects\Matchmaking-bot\src\Matchmaking-bot\Properties\AssemblyInfo.cs"
