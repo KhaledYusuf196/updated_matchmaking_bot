@@ -1,6 +1,7 @@
 ﻿using Discore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,32 +24,51 @@ namespace Matchmaking_bot
                 t2 = new Team();
             }
         }
+        string svdata;
+        FileStream file;
+        StreamReader reader;
 
         public static void Main(string[] args) => new Program().Start();
         public void Start()
         {
+            lineup = "GK CB LB RB CM LW RW CF";
             channellist def = new channellist();
-            def.init();
-            ulong channelId = 252113301004222465;
+            ulong channelId;
             List<ulong> ids = new List<ulong>();
             List<channellist> channels = new List<channellist>();
-            ids.Add(channelId);
-            channels.Add(def);
+            file = new FileStream("config\\channels.txt", FileMode.Open, FileAccess.Read);
+            reader = new StreamReader(file);
+            while((svdata = reader.ReadLine()) != null)
+            {
+                channelId = ulong.Parse(svdata);
+                def.init();
+                t1 = def.t1;
+                t2 = def.t2;
+                t1.setlist(lineup);
+                t2.setlist(lineup);
+                t1.init();
+                t2.init();
+                ids.Add(channelId);
+                channels.Add(def);
+                
+            }
             List<Server> servers = new List<Server>();
-            servers.Add(new Server("Amsterdam", "95.211.1.210:27029"));
+            file = new FileStream("config\\servers.txt",FileMode.Open,FileAccess.Read);
+            reader = new StreamReader(file);
+            
+            while ((svdata = reader.ReadLine()) != null)
+            {
+                servers.Add(new Server(svdata.Substring(0, svdata.LastIndexOf(' ')),svdata.Substring(svdata.LastIndexOf(' ')+1)));
+            }
+            /*servers.Add(new Server("Amsterdam", "95.211.1.210:27029"));
             servers.Add(new Server("London", "77.246.174.116:27035"));
             servers.Add(new Server("Paris", "195.154.168.136:27029"));
             servers.Add(new Server("New York City", "206.221.184.242:27029"));
-            servers.Add(new Server("Chicago", "46.21.154.203:27029"));
-            lineup = "GK CB LB RB CM LW RW CF";
+            servers.Add(new Server("Chicago", "46.21.154.203:27029"));*/
+            
 
-            t1 = def.t1;
-            t2 = def.t2;
-            t1.setlist(lineup);
-            t2.setlist(lineup);
-            t1.init();
-            t2.init();
-            string token = "TOKEN_HERE";
+            
+            string token =File.ReadAllText("config\\Token.txt");
             _client = new DiscordClient();
 
             _client.Connect(token);
