@@ -38,9 +38,11 @@ namespace Matchmaking_bot
             List<channellist> channels = new List<channellist>();
             file = new FileStream("config\\channels.txt", FileMode.Open, FileAccess.Read);
             reader = new StreamReader(file);
+            Console.WriteLine("running in channels : ");
             while((svdata = reader.ReadLine()) != null)
             {
                 channelId = ulong.Parse(svdata);
+                Console.WriteLine(channelId);
                 def.init();
                 t1 = def.t1;
                 t2 = def.t2;
@@ -55,9 +57,10 @@ namespace Matchmaking_bot
             List<Server> servers = new List<Server>();
             file = new FileStream("config\\servers.txt",FileMode.Open,FileAccess.Read);
             reader = new StreamReader(file);
-            
+            Console.WriteLine("with servers : ");
             while ((svdata = reader.ReadLine()) != null)
             {
+                Console.WriteLine(svdata);
                 servers.Add(new Server(svdata.Substring(0, svdata.LastIndexOf(' ')),svdata.Substring(svdata.LastIndexOf(' ')+1)));
             }
             /*servers.Add(new Server("Amsterdam", "95.211.1.210:27029"));
@@ -65,10 +68,11 @@ namespace Matchmaking_bot
             servers.Add(new Server("Paris", "195.154.168.136:27029"));
             servers.Add(new Server("New York City", "206.221.184.242:27029"));
             servers.Add(new Server("Chicago", "46.21.154.203:27029"));*/
-            
 
-            
+
+            Console.WriteLine("using token : ");
             string token =File.ReadAllText("config\\Token.txt");
+            Console.WriteLine(token);
             _client = new DiscordClient();
 
             _client.Connect(token);
@@ -410,7 +414,7 @@ namespace Matchmaking_bot
             {
                 
             }
-            
+            Console.WriteLine("pleaze don't press Enter, I don't want to die :(");
             Console.ReadLine();
                
         }
