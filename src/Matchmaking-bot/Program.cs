@@ -36,7 +36,7 @@ namespace Matchmaking_bot
             ulong channelId;
             List<ulong> ids = new List<ulong>();
             List<channellist> channels = new List<channellist>();
-            file = new FileStream("config\\channels.txt", FileMode.Open, FileAccess.Read);
+            file = new FileStream("config/channels.txt", FileMode.Open, FileAccess.Read);
             reader = new StreamReader(file);
             Console.WriteLine("running in channels : ");
             while((svdata = reader.ReadLine()) != null)
@@ -55,7 +55,7 @@ namespace Matchmaking_bot
                 
             }
             List<Server> servers = new List<Server>();
-            file = new FileStream("config\\servers.txt",FileMode.Open,FileAccess.Read);
+            file = new FileStream("config/servers.txt",FileMode.Open,FileAccess.Read);
             reader = new StreamReader(file);
             Console.WriteLine("with servers : ");
             while ((svdata = reader.ReadLine()) != null)
@@ -71,7 +71,7 @@ namespace Matchmaking_bot
 
 
             Console.WriteLine("using token : ");
-            string token =File.ReadAllText("config\\Token.txt");
+            string token =File.ReadAllText("config/Token.txt");
             Console.WriteLine(token);
             _client = new DiscordClient();
 
