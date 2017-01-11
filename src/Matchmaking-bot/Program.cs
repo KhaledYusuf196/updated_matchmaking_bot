@@ -35,6 +35,7 @@ namespace Matchmaking_bot
             channellist def = new channellist();
             ulong channelId;
             List<ulong> ids = new List<ulong>();
+            List<ulong> blacklist = new List<ulong>();
             List<channellist> channels = new List<channellist>();
             file = new FileStream("config/channels.txt", FileMode.Open, FileAccess.Read);
             reader = new StreamReader(file);
@@ -43,6 +44,7 @@ namespace Matchmaking_bot
             {
                 channelId = ulong.Parse(svdata);
                 Console.WriteLine(channelId);
+                def = new channellist();
                 def.init();
                 t1 = def.t1;
                 t2 = def.t2;
@@ -81,7 +83,7 @@ namespace Matchmaking_bot
                 _client.OnMessageCreated += async (s, e) => {
                     // Check to make sure that the bot is not the author
 
-                    if (e.Message.Author != _client.User)
+                    if (e.Message.Author != _client.User && !blacklist.Contains(ulong.Parse(e.Message.Author.Id)))
                     {
                         if (ids.Contains(ulong.Parse(e.Message.Channel.Id)))
                         {
@@ -115,6 +117,12 @@ namespace Matchmaking_bot
 
                             }
                             else
+                            if (e.Message.Content.ToLower().Equals("!list"))
+                            {
+                                await e.Message.Delete();
+                                await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + t1.toString() + Environment.NewLine + t2.toString());
+                            }
+                            else
                             if (e.Message.Content.ToLower().StartsWith("!add "))
                             {
 
@@ -122,20 +130,28 @@ namespace Matchmaking_bot
                                 {
                                     string z = e.Message.Content.Substring(5);
                                     await e.Message.Delete();
-                                    string n = z.Substring(0, z.LastIndexOf(' '));
-                                    string po = z.Substring(z.LastIndexOf(' ') + 1);
-                                    p = new Player();
-                                    p.setname(n);
-                                    if (t1.sign(po.ToUpper(), p))
+                                    if(z.Contains(" "))
                                     {
-                                        await e.Message.Channel.SendMessage(z + " added to team");
-                                    }
-                                    else if (t2.sign(po.ToUpper(), p))
-                                    {
-                                        await e.Message.Channel.SendMessage(z + " added to team");
+                                        string n = z.Substring(0, z.LastIndexOf(' '));
+                                        string po = z.Substring(z.LastIndexOf(' ') + 1);
+                                        p = new Player();
+                                        p.setname(n);
+                                        if (t1.sign(po.ToUpper(), p))
+                                        {
+                                            await e.Message.Channel.SendMessage(z + " added to team");
+                                        }
+                                        else if (t2.sign(po.ToUpper(), p))
+                                        {
+                                            await e.Message.Channel.SendMessage(z + " added to team");
+                                        }
+                                        else
+                                            await e.Message.Channel.SendMessage("<@" + e.Message.Author.Id + ">" + " position already taken.");
                                     }
                                     else
-                                        await e.Message.Channel.SendMessage("<@" + e.Message.Author.Id + ">" + " position already taken.");
+                                    {
+                                        await e.Message.Channel.SendMessage("<@" + e.Message.Author.Id + "> you have to add player name and position");
+                                    }
+                                    
                                 }
                                 //await e.Channel.Edit(null, t1.toString() + Environment.NewLine + t2.toString());
                             }
@@ -193,6 +209,7 @@ namespace Matchmaking_bot
                                         await e.Message.Channel.SendMessage("Lineup isn't entered correctly. ");
 
                                     }
+                                    await e.Message.Delete();
                                 }
 
                             }
@@ -245,12 +262,6 @@ namespace Matchmaking_bot
 
                             }
                             else
-                            if (e.Message.Content.ToLower().Equals("!list"))
-                            {
-                                await e.Message.Delete();
-                                await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + t1.toString() + Environment.NewLine + t2.toString());
-                            }
-                            else
                             if (e.Message.Content.ToLower().Equals("!reset"))
                             {
                                 t1.init();
@@ -297,15 +308,22 @@ namespace Matchmaking_bot
                             if (e.Message.Content.ToLower().StartsWith("!addsv "))
                             {
                                 string z = e.Message.Content.Substring(7);
-                                string name = z.Substring(0, z.LastIndexOf(' '));
-                                string ip = z.Substring(z.LastIndexOf(' ') + 1);
-                                await e.Message.Delete();
-                                if (ip.Contains(".") && ip.Contains(":"))
+                                if(z.Contains(" "))
                                 {
-                                    servers.Add(new Server(name, ip));
+                                    string name = z.Substring(0, z.LastIndexOf(' '));
+                                    string ip = z.Substring(z.LastIndexOf(' ') + 1);
+                                    await e.Message.Delete();
+                                    if (ip.Contains(".") && ip.Contains(":"))
+                                    {
+                                        servers.Add(new Server(name, ip));
+                                    }
+                                    else
+                                        await e.Message.Channel.SendMessage("Wrong ip inserted");
                                 }
                                 else
+                                {
                                     await e.Message.Channel.SendMessage("Wrong ip inserted");
+                                }
                             }
                             else
                             if (e.Message.Content.ToLower().StartsWith("!rmsv "))
@@ -377,6 +395,19 @@ namespace Matchmaking_bot
                         }
                         else
                         {
+                            if(e.Message.Author.Id == "177911539553009665" && e.Message.Content.StartsWith("!ban "))
+                            {
+                                string banned = e.Message.Content.Substring(5);
+                                blacklist.Add(ulong.Parse(banned));
+                            }
+                            else if (e.Message.Author.Id == "177911539553009665" && e.Message.Content.StartsWith("!unban "))
+                            {
+                                string banned = e.Message.Content.Substring(7);
+                                if (blacklist.Contains(ulong.Parse(banned)))
+                                {
+                                    blacklist.Remove(ulong.Parse(banned));
+                                }
+                            }
                             try
                             {
                                 if (e.Message.AuthorMember.HasPermission(DiscordPermission.Administrator))
@@ -414,7 +445,7 @@ namespace Matchmaking_bot
             {
                 
             }
-            Console.WriteLine("pleaze don't press Enter, I don't want to die :(");
+            Console.WriteLine("please don't press Enter, I don't want to die :(");
             Console.ReadLine();
                
         }
