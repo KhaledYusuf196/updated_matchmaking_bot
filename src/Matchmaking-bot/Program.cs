@@ -135,10 +135,12 @@ namespace Matchmaking_bot
                                         if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.sign(po.ToUpper(), p))
                                         {
                                             await e.Message.Channel.SendMessage(z + " added to team");
+                                            await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                         }
                                         else if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.sign(po.ToUpper(), p))
                                         {
                                             await e.Message.Channel.SendMessage(z + " added to team");
+                                            await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                         }
                                         else
                                             await e.Message.Channel.SendMessage("<@" + e.Message.Author.Id + ">" + " position already taken.");
@@ -164,10 +166,12 @@ namespace Matchmaking_bot
                                     if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.unsign(p))
                                     {
                                         await e.Message.Channel.SendMessage(z + " removed from team");
+                                        await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                     }
                                     else if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.unsign(p))
                                     {
                                         await e.Message.Channel.SendMessage(z + " removed from team");
+                                        await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                     }
                                     else
                                         await e.Message.Channel.SendMessage("No player in a team called " + z);
@@ -220,11 +224,13 @@ namespace Matchmaking_bot
                                 if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.unsign(p))
                                 {
                                     await e.Message.Channel.SendMessage(e.Message.Author.Username + " unsigned.");
+                                    await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                     //await e.Channel.Edit(null, t1.toString() + Environment.NewLine + t2.toString());
                                 }
                                 else if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.unsign(p))
                                 {
                                     await e.Message.Channel.SendMessage(e.Message.Author.Username + " unsigned.");
+                                    await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                     //await e.Channel.Edit(null, t1.toString() + Environment.NewLine + t2.toString());
                                 }
                                 else
@@ -276,6 +282,7 @@ namespace Matchmaking_bot
                                 await e.Message.Delete();
                                 //await e.Channel.Edit(null, t1.toString() + Environment.NewLine + t2.toString());
                                 await e.Message.Channel.SendMessage("Team " + e.Message.Content.Substring(4) + " is challenging Mix");
+                                await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                             }
                             else
                             if (e.Message.Content.ToLower().Equals("!vsmix"))
@@ -286,6 +293,7 @@ namespace Matchmaking_bot
                                     channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.init();
                                     //await e.Channel.Edit(null, t1.toString() + Environment.NewLine + t2.toString());
                                     await e.Message.Channel.SendMessage("Teams are now mix");
+                                    await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                 }
                                 else await e.Message.Channel.SendMessage("The teams are already mix");
                             }
@@ -365,10 +373,12 @@ namespace Matchmaking_bot
                                     if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.sign(pos.ToUpper(), p))
                                     {
                                         await e.Message.Channel.SendMessage(p.getname() + " signed for match.");
+                                        await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                     }
                                     else if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.sign(pos.ToUpper(), p))
                                     {
                                         await e.Message.Channel.SendMessage(p.getname() + " signed for match.");
+                                        await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                     }
                                     else
                                     {
@@ -379,6 +389,7 @@ namespace Matchmaking_bot
                                             if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.sign(pos.ToUpper(), p))
                                             {
                                                 await e.Message.Channel.SendMessage(p.getname() + " signed for match.");
+                                                await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                             }
                                             else
                                                 await e.Message.Channel.SendMessage(p.getmention() + " position is taken or incorrect command.");
@@ -391,6 +402,7 @@ namespace Matchmaking_bot
                                             if (channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.sign(pos.ToUpper(), p))
                                             {
                                                 await e.Message.Channel.SendMessage(p.getname() + " signed for match.");
+                                                await e.Message.Channel.SendMessage("The team lists are " + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t1.toString() + Environment.NewLine + channels[ids.IndexOf(ulong.Parse(e.Message.Channel.Id))].t2.toString());
                                             }
                                             else
                                                 await e.Message.Channel.SendMessage(p.getmention() + " position is taken or incorrect command.");
